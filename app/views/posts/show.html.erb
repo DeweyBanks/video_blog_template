@@ -1,0 +1,6 @@
+<h1>The Post</h1>
+
+<h4><%= @post.title %></h4>
+<p><%= @post.body %></p>
+<%= video_tag @post.video.url(:medium), controls: true, type: "video/mp4", size: "100%" %>
+

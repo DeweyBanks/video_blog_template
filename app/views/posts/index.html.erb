@@ -1,0 +1,18 @@
+<h1>Posts</h1>
+<% if @posts.any? %>
+<div>
+  <% @posts.each do |post| %>
+  <ul>
+    <li><h3><%= link_to post.title, "/posts/#{post.id}" %></h3></li>
+    <li><p><%= post.body %></p></li>
+    <% if post.photos.any? %>
+      <% post.photos.each do |photo| %>
+        <%= photo.title %>
+        <%= photo.description %>
+        <li><%= image_tag photo.image.url(:thumb) %></li>
+      <% end %>
+    <% end %>
+  </ul>
+  <% end %>
+</div>
+<% end %>
