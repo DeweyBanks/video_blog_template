@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>HdBlog</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
 
   <link href="http://hayageek.github.io/jQuery-Upload-File/4.0.10/uploadfile.css" rel="stylesheet">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -11,12 +11,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div>
-  <%= render :partial => 'shared/header' %>
+    <%= render :partial => 'shared/header' %>
+  <div id="main-container" class="container-fluid">
     <%= yield %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= render :partial => 'shared/footer' %>
-    </div>
+  </div>
 </body>
 </html>

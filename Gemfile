@@ -30,6 +30,8 @@ gem 'rails_admin', '~> 0.6.8'
 gem 'paperclip', '~> 4.3.1'
 gem 'normalize-rails'
 gem 'paperclip-av-transcoder'
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
 # Use Unicorn as the app server
 # gem 'unicorn'
 gem 'thin'
