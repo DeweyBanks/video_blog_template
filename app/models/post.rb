@@ -10,4 +10,12 @@ class Post < ActiveRecord::Base
   }, :processors => [:transcoder]
   validates_attachment_content_type :video, content_type: /\Avideo\/.*\Z/
 
+  def previous_post
+    self.class.where(["created_at < ?", created_at]).last
+  end
+
+  def next_post
+    self.class.where(["created_at > ?", created_at]).first
+  end
+
 end

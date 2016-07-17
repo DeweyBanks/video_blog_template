@@ -1,18 +1,28 @@
-<h1>Posts</h1>
-<% if @posts.any? %>
-<div>
-  <% @posts.each do |post| %>
-  <ul>
-    <li><h3><%= link_to post.title, "/posts/#{post.id}" %></h3></li>
-    <li><p><%= post.body %></p></li>
-    <% if post.photos.any? %>
-      <% post.photos.each do |photo| %>
-        <%= photo.title %>
-        <%= photo.description %>
-        <li><%= image_tag photo.image.url(:thumb) %></li>
+<div class="container">
+  <div class="row">
+    <h1>Posts</h1>
+      <% if @posts.any? %>
+        <% @posts.each do |post| %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3><%= link_to post.title, "/posts/#{post.id}" %></h3>
+          </div> <!-- panel-heading -->
+          <div class="panel-body">
+            <p><%= post.body %></p>
+          </div>
+          <div class="media">
+            <div class="media-right">
+            <% if post.photos.any? %>
+              <% post.photos.each do |photo| %>
+                <div class="media-object">
+                  <%= image_tag photo.image.url(:thumb) %>
+                </div>
+              <% end %>
+            <% end %>
+            </div>
+          </div>
+        </div> <!-- panel -->
+        <% end %>
       <% end %>
-    <% end %>
-  </ul>
-  <% end %>
+  </div> <!-- row -->
 </div>
-<% end %>

@@ -1,6 +1,30 @@
-<h1>The Post</h1>
-
-<h4><%= @post.title %></h4>
-<p><%= @post.body %></p>
-<%= video_tag @post.video.url(:medium), controls: true, type: "video/mp4", size: "100%" %>
-
+<div class="container-fluid">
+  <div class="container">
+    <div class="jumbotron">
+      <div class="container">
+        <% if @post.present? %>
+        <h1><%= @post.title %></h1>
+        <p><%= @post.body %></p>
+        <span class="small">Click images to enlarge</span>
+        <div class="row">
+          <% if @post.photos.present? %>
+            <% @post.photos.each do |photo| %>
+            <div class="col-xs-6 col-md-3">
+              <div class="thumbnail">
+                <a href="<%=photo.image.url() %>" class="thumbnail img-responsive">
+                  <%= image_tag photo.image.url(:medium) %>
+                </a>
+              </div>
+            </div>
+            <% end %>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
+      <ul class="nav nav-pills">
+        <li role="presentation"><%= link_to("Previous", "/posts/#{@post.previous_post.id}", :class => "label label-primary") if @post.previous_post %></li>
+        <li role="presentation"><%= link_to("Next", "/posts/#{@post.next_post.id}", :class => "label label-success") if @post.next_post %></li>
+      </ul>
+    </div>
+  </div>
+</div>
