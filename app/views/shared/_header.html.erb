@@ -17,6 +17,9 @@
         <% if current_user && current_user.role.name == "admin" %>
         <li><%= link_to 'Admin', rails_admin_path %></li>
         <% end %>
+        <% if current_user %>
+        <li><%= link_to "Sign Out", destroy_user_session_path, method: 'delete', data: { confirm: 'Are you sure?' } %></li>
+        <% end %>
       </ul>
     </div>
     <!--/.nav-collapse -->
